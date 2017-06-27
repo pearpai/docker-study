@@ -1,0 +1,59 @@
+version: '2'
+services:
+  hserver1:
+    image: hadoop:base
+    container_name: hserver1
+    hostname: hserver1
+    privileged: true
+    environment:
+      ROLE: node
+    ports:
+      - 50070:50070
+    volumes:
+      - ./config/hadoop/master/core-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/core-site.xml
+      - ./config/hadoop/master/hadoop-env.sh:/opt/hadoop/hadoop-2.8.0/etc/hadoop/hadoop-env.sh
+      - ./config/hadoop/master/hdfs-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/hdfs-site.xml
+      - ./config/hadoop/master/mapred-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/mapred-site.xml
+      - ./config/hadoop/master/slaves:/opt/hadoop/hadoop-2.8.0/etc/hadoop/slaves
+      - ./config/hadoop/master/yarn-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/yarn-site.xml
+      - ./config/hadoop/master/yarn-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/yarn-site1.xml
+      - ./config/hadoop/ssh/hserver1/id_rsa:/root/.ssh/id_rsa
+      - ./config/hadoop/ssh/hserver1/id_rsa.pub:/root/.ssh/id_rsa.pub
+      - ./config/hadoop/ssh/hserver1/authorized_keys:/root/.ssh/authorized_keys
+      - ./data/hadoop/:/root/hadoop/
+
+  hserver2:
+    image: hadoop:base
+    container_name: hserver2
+    hostname: hserver2
+    privileged: true
+    volumes:
+      - ./config/hadoop/master/core-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/core-site.xml
+      - ./config/hadoop/master/hadoop-env.sh:/opt/hadoop/hadoop-2.8.0/etc/hadoop/hadoop-env.sh
+      - ./config/hadoop/master/hdfs-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/hdfs-site.xml
+      - ./config/hadoop/master/mapred-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/mapred-site.xml
+      - ./config/hadoop/master/slaves:/opt/hadoop/hadoop-2.8.0/etc/hadoop/slaves
+      - ./config/hadoop/master/yarn-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/yarn-site.xml
+      - ./config/hadoop/ssh/hserver2/id_rsa:/root/.ssh/id_rsa
+      - ./config/hadoop/ssh/hserver2/id_rsa.pub:/root/.ssh/id_rsa.pub
+      - ./config/hadoop/ssh/hserver2/authorized_keys:/root/.ssh/authorized_keys
+      - ./data/hadoop2/:/root/hadoop/
+
+  hserver3:
+    image: hadoop:base
+    container_name: hserver3
+    hostname: hserver3
+    privileged: true
+    volumes:
+      - ./config/hadoop/master/core-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/core-site.xml
+      - ./config/hadoop/master/hadoop-env.sh:/opt/hadoop/hadoop-2.8.0/etc/hadoop/hadoop-env.sh
+      - ./config/hadoop/master/hdfs-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/hdfs-site.xml
+      - ./config/hadoop/master/mapred-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/mapred-site.xml
+      - ./config/hadoop/master/slaves:/opt/hadoop/hadoop-2.8.0/etc/hadoop/slaves
+      - ./config/hadoop/master/yarn-site.xml:/opt/hadoop/hadoop-2.8.0/etc/hadoop/yarn-site.xml
+      - ./config/hadoop/ssh/hserver3/id_rsa:/root/.ssh/id_rsa
+      - ./config/hadoop/ssh/hserver3/id_rsa.pub:/root/.ssh/id_rsa.pub
+      - ./config/hadoop/ssh/hserver3/authorized_keys:/root/.ssh/authorized_keys
+      - ./data/hadoop3/:/root/hadoop/
+
+

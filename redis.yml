@@ -1,0 +1,76 @@
+version: '2'
+services:
+  redis_master:
+    image: redis:base
+    container_name: redis_master
+    hostname: redis_master
+    privileged: true
+    environment:
+      ROLE: master
+    volumes:
+      - ./data/log/master/:/var/log/redis/:rw
+      - ./data/data/master/:/data/:rw
+    ports:
+      - 6300:6379
+    depends_on:
+      - redis_server1
+      - redis_server2
+      - redis_server3
+      - redis_server4
+      - redis_server5
+
+
+  redis_server1:
+    image: redis:base
+    container_name: redis_server1
+    hostname: redis_server1
+    privileged: true
+    volumes:
+      - ./data/log/server1/:/var/log/redis/:rw
+      - ./data/data/server1/:/data/:rw
+    ports:
+      - 6301:6379
+
+  redis_server2:
+    image: redis:base
+    container_name: redis_server2
+    hostname: redis_server2
+    privileged: true
+    volumes:
+      - ./data/log/server2/:/var/log/redis/:rw
+      - ./data/data/server2/:/data/:rw
+    ports:
+      - 6302:6379
+
+  redis_server3:
+    image: redis:base
+    container_name: redis_server3
+    hostname: redis_server3
+    privileged: true
+    volumes:
+      - ./data/log/server3/:/var/log/redis/:rw
+      - ./data/data/server3/:/data/:rw
+    ports:
+      - 6303:6379
+
+  redis_server4:
+    image: redis:base
+    container_name: redis_server4
+    hostname: redis_server4
+    privileged: true
+    volumes:
+      - ./data/log/server4/:/var/log/redis/:rw
+      - ./data/data/server4/:/data/:rw
+    ports:
+      - 6304:6379
+
+  redis_server5:
+    image: redis:base
+    container_name: redis_server5
+    hostname: redis_server5
+    privileged: true
+    volumes:
+      - ./data/log/server5/:/var/log/redis/:rw
+      - ./data/data/server5/:/data/:rw
+    ports:
+      - 6305:6379

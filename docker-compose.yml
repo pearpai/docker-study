@@ -1,0 +1,13 @@
+version: '2'
+services:
+  base:
+    image: centos:base
+    build: ./base-centos
+
+  redis:
+    image: redis:base
+    build: ./redis
+
+  hadoop:
+    image: hadoop:base
+    build: ./hadoop
